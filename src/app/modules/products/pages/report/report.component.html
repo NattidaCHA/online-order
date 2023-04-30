@@ -1,0 +1,59 @@
+<div class="section-report">
+  <div class="container-report">
+    <h3 class="mb-5">Report</h3>
+    <!-- Tab Nav -->
+    <div class="nav-wrapper position-relative w-50">
+      <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-text" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" data-bs-toggle="tab" href="#tabs-text-1"
+            role="tab" aria-controls="tabs-text-1" aria-selected="true">Actual & Target</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-2-tab" data-bs-toggle="tab" href="#tabs-text-2" role="tab"
+            aria-controls="tabs-text-2" aria-selected="false">Growth Trend</a>
+        </li>
+      </ul>
+    </div>
+    <!-- End of Tab Nav -->
+    <!-- Tab Content -->
+    <div class="card border-0">
+      <div class="card-body p-0">
+        <div class="tab-content" id="tabcontent1">
+          <div class="tab-pane fade show active" id="tabs-text-1" role="tabpanel" aria-labelledby="tabs-text-1-tab">
+            <div class="chart-section">
+              <div class="chart-container" [ngClass]="actual.length < 1  ? 'd-none': 'd-block'">
+                <div class="card-total">
+                  <p class="fw-normal text-detail">Total</p>
+                  <p class="fw-normal text-detail">{{totalActual}} Pc</p>
+                </div>
+                <canvas id="chart-line" width="400" height="150"></canvas>
+              </div>
+              <div class="justify-content-center" [ngClass]="actual.length < 1  ? 'd-flex': 'd-none'">
+                <div class="spinner-border text-primary" role="status" style="width: 5rem; height: 5rem;">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="tabs-text-2" role="tabpanel" aria-labelledby="tabs-text-2-tab">
+            <div class="chart-section">
+              <div class="chart-container" [ngClass]="year.length < 1  ? 'd-none': 'd-block'">
+                <div class="card-total">
+                  <p class="fw-normal text-detail">Total</p>
+                  <p class="fw-normal text-detail">{{totalGrowth}} ชิ้น</p>
+                </div>
+                <canvas id="growth" width="400" height="150"></canvas>
+              </div>
+              <div class="justify-content-center" [ngClass]="year.length < 1  ? 'd-flex': 'd-none'">
+                <div class="spinner-border text-primary" role="status" style="width: 5rem; height: 5rem;">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Tab Content -->

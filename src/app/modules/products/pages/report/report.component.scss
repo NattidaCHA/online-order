@@ -1,0 +1,63 @@
+.section-report {
+  width: 100%;
+
+  .container-report {
+    margin: 8% 15% 7% 15%;
+
+    .chart-section {
+      margin: 5% 0% 3% 0%;
+      border: 1px solid transparent;
+      border-radius: 10px;
+
+      .chart-container {
+        display: flex;
+        flex-direction: column;
+
+        .card-total {
+          width: 40%;
+          height: 20%;
+          margin-bottom: 10%;
+          padding: 2%;
+          border: 1px solid transparent;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          background-color: #a7eeff;
+
+          @media (max-width: 850px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .text-detail {
+            font-weight: 400;
+            font-size: 32px;
+
+            @media (max-width: 520px) {
+              font-size: 12px;
+            }
+
+            @media (min-width: 521px) and (max-width: 1200px) {
+              font-size: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: var(--bs-nav-pills-link-active-color) !important;
+  background-color:#0d6efd !important;
+}
+
+.nav-pills .nav-link {
+  background-color: rgb(201, 203, 207) !important;
+  color: black !important;
+}

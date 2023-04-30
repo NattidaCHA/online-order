@@ -1,0 +1,13 @@
+header li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.text-title {
+  color: #fff !important;
+
+  @media screen and (max-width: 991px) {
+    color: #000 !important;
+  }
+}

@@ -1,0 +1,95 @@
+.section-products {
+  width: 100%;
+
+  .container-product {
+    margin: 7% 3% 7% 3%;
+
+    @media (max-width: 450px) {
+      margin-top: 25%;
+    }
+
+    @media (min-width: 451px) and (max-width: 767px) {
+      margin-top: 18%;
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) {
+      margin-top: 10%;
+    }
+
+    .next-page {
+      display: flex;
+      align-items: center;
+      margin: 2%;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-row: 1;
+      gap: 1;
+
+      @media (max-width: 500px) {
+        grid-template-columns: 100%;
+      }
+
+      @media (min-width: 501px) and (max-width: 999px) {
+        grid-template-columns: 50% 50%;
+      }
+
+      @media (min-width: 1000px) and (max-width: 1200px) {
+        grid-template-columns: 33% 33% 33%;
+      }
+
+      .card-product {
+        // height: 80%;
+        margin: 2% 2% 4% 2%;
+        padding: 10%;
+        border: 1px solid #cecece;
+        border-radius: 10px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        .detail {
+          display: grid;
+          grid-template-columns: 20% 70%;
+          grid-row: 1;
+          gap: 1;
+
+          .card-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .text-title {
+              font-size: 18px;
+              margin-bottom: 3%;
+
+              @media (min-width: 501px) and (max-width: 599px) {
+                font-size: 12px;
+              }
+            }
+
+            @media (min-width: 501px) and (max-width: 599px) {
+              .detail-salse {
+                font-size: 12px;
+
+                .icon-salse {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .card-product:hover {
+        background-color: #fff;
+        border-radius: 12px;
+        //max-width: 112px;
+        border: 1px solid #cecece;
+        box-shadow: 0px 0px 16px 8px #cecece;
+        cursor: pointer;
+      }
+    }
+  }
+}
