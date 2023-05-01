@@ -30,3 +30,12 @@ export interface ShowRecord {
 export interface Error {
   message: string;
 }
+
+export interface Total {
+  response: ResponseDetail;
+  data: TotalDetail;
+}
+
+export interface TotalDetail {
+  total: string;
+}

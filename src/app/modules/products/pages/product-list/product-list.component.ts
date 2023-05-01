@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {
   ProductDetail,
   ProductLitsResponse,
+  Total,
 } from 'src/app/models/product-list';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -12,8 +13,9 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
   page: number = 1;
-  size: number = 20;
+  size: number = 32;
   noData: boolean = false;
+  total:string = '0'
 
   products!: ProductDetail[];
 
@@ -24,10 +26,21 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
+
+    this._productService.getTotalProduct().subscribe({
+      next: (result:Total) => {
+        this.total = result.data.total
+        console.log(result.data)
+        this._changeDetectorRef.markForCheck();
+      },
+      error: (e) => {
+        console.log(e.error);
+      },
+    });
   }
 
   getProduct() {
-    this._productService.geProduct(this.page, this.size).subscribe({
+    this._productService.getProduct(this.page, this.size).subscribe({
       next: (result: ProductLitsResponse) => {
         if (result.data) {
           this.noData = false;

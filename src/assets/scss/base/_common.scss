@@ -102,15 +102,6 @@ tbody tr:hover {
   margin: 0;
   color: #4a4a4a;
 }
-
-.green {
-  color: #26de81 !important;
-}
-
-.red {
-  color: #ff231f !important;
-}
-
 .card-body {
   flex: 1 1 auto;
   padding: 1.25rem;
@@ -126,16 +117,6 @@ tbody tr:hover {
   border-bottom-width: 0;
 }
 
-.dark-bb {
-  border-bottom: 1px solid #2a2e39;
-}
-
-#darkDepthChart,
-#lightDepthChart {
-  width: 100%;
-  height: 349px;
-}
-
 .sm-gutters {
   padding-left: 7.5px;
   padding-right: 7.5px;
@@ -147,139 +128,15 @@ tbody tr:hover {
   padding-left: 7.5px;
 }
 
-.form-control::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: #18214d59;
-}
-
-.form-control::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #18214d59;
-}
-
-.form-control:-ms-input-placeholder {
-  /* IE 10+ */
-  color: #18214d59;
-}
-
-.form-control:-moz-placeholder {
-  /* Firefox 18- */
-  color: #18214d59;
-}
-
-.custom-control-input:focus ~ .custom-control-label::before {
-  box-shadow: none;
-}
-
-.nav-tabs .nav-link.active {
-  background-color: #529eb7;
-  width: 100%;
-}
-
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-link:hover {
-  border-color: transparent;
-}
-
-.slick-slide > div {
-  margin: 0 8px;
-}
-
-.slick-list {
-  margin: 0 -8px;
-}
-
-.page-content {
-  margin: 40px 0 100px;
-}
-
-.page-content h2 {
-  font-size: 26px;
-  margin-bottom: 20px;
-  margin-top: 60px;
-}
-
-.page-content p {
-  font-size: 16px;
-}
-
-.news-details {
-  padding: 100px 0;
-}
-
-.news-details h2 {
-  font-size: 26px;
-  margin-bottom: 20px;
-}
-
-.news-details p {
-  font-size: 16px;
-}
-
-.theme-toggle-input {
-  display: none;
-}
-
-.theme-toggle-input-label {
-  cursor: pointer;
-}
-
-.light-mode .lightMode {
-  display: none;
-}
-
-input:focus {
-  box-shadow: none !important;
-  border: 1px solid #529eb7 !important;
-}
-
-input[type='submit'] {
-  background-color: #529eb7 !important;
-  border: 1px solid #529eb7 !important;
-  color: #000;
-}
-
-select:focus {
-  border: 1px solid #529eb7 !important;
-  box-shadow: none !important;
-}
-
-textarea:focus {
-  box-shadow: none !important;
-  border: 1px solid #529eb7 !important;
-}
-
-.form-group input,
-input {
-  border: 1px solid #e0e3eb;
-  height: 45px;
-  color: #18214d;
-  font-size: 14px;
-}
-
-.label-required {
-  color: red;
-}
-
-.form-check-input:checked {
-  background-color: #529eb7;
-  border: 1px solid #529eb7;
-}
-
-
 .btn-primary {
-  background-color: #5AAAC7;
-  border-color: #5AAAC7;
+  background-color: transparent;
+  border-color: #cdcdcd;
   &:hover  {
-    background-color: #529eb7;
-    border-color: #529eb7;
+    background-color: transparent;
+    border-color: #cdcdcd;
   }
   &:focus:active  {
-    background-color: #529eb7;
-    border-color: #529eb7;
+    background-color:transparent;
+    border-color: #cdcdcd;
   }
-}
-
-.text-primary {
-  color: #529eb7 !important;
 }

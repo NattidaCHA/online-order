@@ -3,7 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './core/layout/layout.component';
 import { ProductListComponent } from './modules/products/pages/product-list/product-list.component';
 import { ReportComponent } from './modules/products/pages/report/report.component';
-import { ReportResolver } from './modules/products/pages/report/report.resolvers';
 
 const childrenRoute = [
   {
@@ -12,9 +11,6 @@ const childrenRoute = [
   },
   {
     path: 'report',
-    // resolve: {
-    //   listResolver: ReportResolver,
-    // },
     component: ReportComponent,
   },
 ];
