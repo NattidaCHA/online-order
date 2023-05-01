@@ -26,7 +26,8 @@ export class ReportComponent implements OnInit {
   target: number[] = [];
   totalActual!: string;
   totalGrowth!: string;
-  private _unsubscribeAll = new Subject();
+  noneActual: boolean = false;
+  noneGrowth: boolean = false;
 
   constructor(
     private _productService: ProductService,
@@ -36,23 +37,32 @@ export class ReportComponent implements OnInit {
   ngOnInit(): void {
     this._productService.getActualTarget().subscribe({
       next: (result: ActualTargetResponse) => {
-        this.target = result.data.target;
-        this.actual = result.data.actual;
-        this.year2 = result.data.year;
-        this.totalActual = result.data.total;
-        this.chartActual();
-        this._changeDetectorRef.markForCheck();
+        if(result.data) {
+          this.target = result.data.target;
+          this.actual = result.data.actual;
+          this.year2 = result.data.year;
+          this.totalActual = result.data.total;
+          this.chartActual();
+          this._changeDetectorRef.markForCheck();
+        }else{
+          this.noneActual = true
+        }
       },
       error: (e) => console.log(e),
     });
 
     this._productService.getGrowth().subscribe({
       next: (result: GrowthResponse) => {
-        this.totalPc = result.data.totalPc;
-        this.year = result.data.year;
-        this.totalGrowth = result.data.total;
-        this.chartGrowth();
-        this._changeDetectorRef.markForCheck();
+        if(result.data) {
+          this.totalPc = result.data.totalPc;
+          this.year = result.data.year;
+          this.totalGrowth = result.data.total;
+          this.chartGrowth();
+          this._changeDetectorRef.markForCheck();
+        }else{
+          this.noneGrowth = true
+        }
+
       },
       error: (e) => console.log(e),
     });

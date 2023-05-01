@@ -14,10 +14,11 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductListComponent implements OnInit {
   page: number = 1;
   size: number = 32;
-  noData: boolean = false;
-  total:string = '0'
+  noData: boolean = true;
+  total: string = '0';
+  noneProduct: boolean = false;
 
-  products!: ProductDetail[];
+  products: ProductDetail[] = [];
 
   constructor(
     private _productService: ProductService,
@@ -28,10 +29,11 @@ export class ProductListComponent implements OnInit {
     this.getProduct();
 
     this._productService.getTotalProduct().subscribe({
-      next: (result:Total) => {
-        this.total = result.data.total
-        console.log(result.data)
-        this._changeDetectorRef.markForCheck();
+      next: (result: Total) => {
+        if (result.data) {
+          this.total = result.data.total;
+          this._changeDetectorRef.markForCheck();
+        }
       },
       error: (e) => {
         console.log(e.error);
@@ -42,13 +44,12 @@ export class ProductListComponent implements OnInit {
   getProduct() {
     this._productService.getProduct(this.page, this.size).subscribe({
       next: (result: ProductLitsResponse) => {
-        if (result.data) {
+        if (result.data && result.data.itemList) {
           this.noData = false;
           this.products = result.data.itemList;
         } else {
           this.noData = true;
         }
-
         this._changeDetectorRef.markForCheck();
       },
       error: (e) => {

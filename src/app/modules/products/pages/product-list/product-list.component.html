@@ -2,7 +2,8 @@
   <div class="container-product">
     <h3 class="mb-3">Products</h3>
     <p class="mb-3">Total Product : {{total}}</p>
-    <div class="next-page" [ngClass]="page == 1 ? 'justify-content-end' : noData ? 'justify-content-start' : 'justify-content-between'">
+    <div class="next-page"
+      [ngClass]="page == 1 ? 'justify-content-end' : noData ? 'justify-content-start' : 'justify-content-between'">
       <a class="" href="javascript:void(0)" (click)="back()" *ngIf="page != 1">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-left"
           viewBox="0 0 16 16">
@@ -13,8 +14,8 @@
       </a>
       <a class="" href="javascript:void(0)" (click)="next()" *ngIf="!noData">
         <span class="fw-semibold">Next</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-right ms-2"
-          viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+          class="bi bi-chevron-right ms-2" viewBox="0 0 16 16">
           <path fill-rule="evenodd"
             d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
         </svg>
@@ -39,5 +40,8 @@
         </div>
       </div>
     </div>
+
+    <div *ngIf="products.length < 1 && noData" class="text-center">No Data</div>
+
   </div>
 </div>
