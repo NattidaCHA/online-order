@@ -20,7 +20,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class HistoryComponent implements OnInit {
   page: number = 1;
-  size: number = 32;
+  size: number = 100;
   noData: boolean = true;
   noneProduct: boolean = false;
   openLog: boolean = false;
@@ -32,23 +32,22 @@ export class HistoryComponent implements OnInit {
     private _productService: ProductService,
     private _changeDetectorRef: ChangeDetectorRef,
     private _toastrService: ToastrService,
-    private _router: Router,
-    private _cookieService: CookieService,
     @Inject(DOCUMENT) private _document: Document,
-    private _renderer2: Renderer2
   ) {}
 
   ngOnInit(): void {
     this.getCartHistory();
-    //getTotalCartSuccess
+    this.getTotalCartSuccess()
   }
 
 
   getTotalCartSuccess() {
-    this._productService.getTotalCartPending().subscribe({
+    this._productService.getTotalCartSuccess().subscribe({
       next: (result: Total) => {
+        console.log(result)
         if (result.data) {
           this.total = parseInt(result.data.total);
+   
         }
         this._changeDetectorRef.markForCheck();
       },
@@ -67,6 +66,7 @@ export class HistoryComponent implements OnInit {
         } else {
           this.noData = true;
         }
+
         this._changeDetectorRef.markForCheck();
       },
       error: (e) => {
