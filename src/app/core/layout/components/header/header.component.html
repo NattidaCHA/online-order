@@ -4,45 +4,45 @@
       <h4 class="text-white me-5">Online order system</h4>
     </a>
 
-    <button
-      class="btn btn-primary navbar-toggler"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasRight"
-      aria-controls="offcanvasRight">
+    <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div
-      class="offcanvas offcanvas-end"
-      tabindex="-1"
-      id="offcanvasRight"
-      aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div class="offcanvas-header">
-        <button
-          type="button"
-          class="btn-close text-reset"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"></button>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a
-              class="nav-link text-title"
-              href=""
-              role="button"
-              aria-expanded="false">
+            <a class="nav-link text-title" href="" role="button" aria-expanded="false">
               Product
             </a>
           </li>
-          <li  class="nav-item">
-            <a
-              class="nav-link text-title"
-              href="/report"
-              role="button"
-              aria-expanded="false">
+          <li class="nav-item">
+            <a class="nav-link text-title" href="/report" role="button" aria-expanded="false">
               Report
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link text-title" href="/purchase" role="button" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart3"
+                viewBox="0 0 16 16">
+                <path
+                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+              </svg>
+              <span class="notify" [ngClass]="cartPending != '0' ? 'd-blok': 'd-none'">
+                <span class="text-noti">{{cartPending}}</span>
+                <span class="visually-hidden">visually-hidden</span>
+              </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-title" href="/history" role="button" aria-expanded="false">
+              Cart history
             </a>
           </li>
         </ul>

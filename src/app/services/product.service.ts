@@ -8,13 +8,28 @@ import {
   ActualTargetData,
   ActualTargetResponse,
 } from '../models/actual-target';
+import { ProductRequest } from '../models/product-request';
+import { CartLitsResponse, CartResponse, Product } from '../models/cart-response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-
   constructor(private _httpClient: HttpClient) {}
+
+  private _id$: BehaviorSubject<string | null> =
+    new BehaviorSubject<string | null>(null);
+
+  get id$(): Observable<string | null> {
+    return this._id$.asObservable();
+  }
+
+  private _cartPending$: BehaviorSubject<CartResponse | null> =
+  new BehaviorSubject<CartResponse | null>(null);
+
+get cartPending$(): Observable<CartResponse | null> {
+  return this._cartPending$.asObservable();
+}
 
   getProduct(
     pageNumber: number,
@@ -41,8 +56,60 @@ export class ProductService {
   }
 
   getTotalProduct(): Observable<Total> {
-    return this._httpClient.get<Total>(
-      `${environment.apiUrl}/total_product`
+    return this._httpClient.get<Total>(`${environment.apiUrl}/total_product`);
+  }
+
+  createCart(productRequest: ProductRequest): Observable<CartResponse> {
+    return this._httpClient.post<CartResponse>(
+      `${environment.apiUrl}/create/cart`,
+      productRequest
     );
+  }
+  deleteCart(cartId: string, productId: string): Observable<CartResponse> {
+    return this._httpClient.delete<CartResponse>(
+      `${environment.apiUrl}/cart/${cartId}/product/${productId}`
+    );
+  }
+
+  updateCart(
+    cartId: string,
+    productRequest: ProductRequest[]
+  ): Observable<CartResponse> {
+    return this._httpClient.put<CartResponse>(
+      `${environment.apiUrl}/update/cart/${cartId}`,
+      productRequest
+    );
+  }
+
+  getCartHistory(
+    pageNumber: number,
+    pageSize: number = 10
+  ): Observable<CartLitsResponse> {
+    return this._httpClient.get<CartLitsResponse>(
+      `${environment.apiUrl}/cart/history`,
+      {
+        params: { pageno: pageNumber, pagesize: pageSize },
+      }
+    );
+  }
+
+  getCartPending(): Observable<CartResponse> {
+    return this._httpClient.get<CartResponse>(
+      `${environment.apiUrl}/cart/pending`
+    ).pipe(
+      tap(response => {
+        this._cartPending$.next(response);
+      })
+    );;
+  }
+
+  
+  getTotalCartPending(): Observable<Total> {
+    return this._httpClient.get<Total>(`${environment.apiUrl}/total_cart/pending`);
+  }
+
+    
+  getTotalCartSuccess(): Observable<Total> {
+    return this._httpClient.get<Total>(`${environment.apiUrl}/total_cart/success`);
   }
 }

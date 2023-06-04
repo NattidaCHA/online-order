@@ -1,0 +1,76 @@
+<div class="section-products">
+  <div class="container-product">
+    <h3>Cart history</h3>
+    <div class="next-page" *ngIf="total && cartHistory && cartHistory.length > 0"
+      [ngClass]="page == 1 ? 'justify-content-end' : noData ? 'justify-content-start' : 'justify-content-between'">
+      <a class="" href="javascript:void(0)" (click)="back()" *ngIf="page != 1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-left"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+        </svg>
+        <span class="me-2 fw-semibold">Previous</span>
+      </a>
+      <a class="" href="javascript:void(0)" (click)="next()" *ngIf="!noData">
+        <span class="fw-semibold">Next</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+          class="bi bi-chevron-right ms-2" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="card-product" *ngIf="cartHistory && cartHistory.length > 0">
+      <div class="card-boder-list" *ngFor="let carts of cartHistory; let i = index">
+        <div class="d-flex justify-content-between">
+          <h5 class="">{{carts.update_date | date :'dd MMM yyyy HH:mm'}}</h5>
+          <a type="button" href="javascript:void(0)" id="open{{i}}" (click)="open(i)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-up"
+              viewBox="0 0 16 16">
+              <path
+                d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
+            </svg>
+          </a>
+          <a type="button" class="d-none" href="javascript:void(0)" id="close{{i}}" (click)="close(i)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-down"
+              viewBox="0 0 16 16">
+              <path
+                d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+            </svg>
+          </a>
+        </div>
+        <div id="detail{{i}}" class="d-none">
+          <div class="border-bottom mt-2 mb-3"></div>
+          <div class="cart-list" *ngFor="let product of carts.cart; let i = index">
+            <div class="cart-list">
+              <div class="product-name">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-tags"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z" />
+                  <path
+                    d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z" />
+                </svg>
+                <span class="ms-2">{{product._id.replace('material_','Material ')}}</span>
+              </div>
+              <div class="product-amount">
+                <span class="amount">Amount</span>
+                <span>{{product.amount}}</span>
+              </div>
+            </div>
+            <div class="border-bottom mt-2 mb-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="cartHistory.length < 1 && noData" class="text-center">
+      <div class="noData">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-inbox" viewBox="0 0 16 16">
+          <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438L14.933 9zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z"/>
+        </svg>
+        <span class="mt-1 ms-3">No Data</span>
+      </div>
+    </div>
+  </div>

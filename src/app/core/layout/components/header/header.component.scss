@@ -11,3 +11,31 @@ header li {
     color: #000 !important;
   }
 }
+
+.notify{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border: 1px solid white;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+  padding-left: 7px;
+  transform: translate(-50%,-50%)!important;
+
+  @media screen and (max-width: 991px) {
+    color: #000 !important;
+    border: 1px solid #000;
+  }
+}
+// .pdt-1 {
+//   // padding: -45px 5px 5px 5px !important;
+// }
+// .text-noti {
+//   font-size: 12px;
+// }
+
+// .border-size {
+//   // width: 20px;
+//   height: 20px;
+// }

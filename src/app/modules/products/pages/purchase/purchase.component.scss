@@ -1,0 +1,63 @@
+.section-products {
+  width: 100%;
+
+  .container-product {
+    margin: 7% 3% 7% 3%;
+
+    @media (max-width: 450px) {
+      margin-top: 25%;
+    }
+
+    @media (min-width: 451px) and (max-width: 767px) {
+      margin-top: 18%;
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) {
+      margin-top: 10%;
+    }
+
+    .card-product {
+      margin: 2% 15% 2% 15%;
+      padding: 3%;
+      border: 1px solid #cecece;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+
+      .product {
+        display: flex;
+        flex-direction: column;
+
+        .amount {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .form-input{
+            width: 20%;
+          }
+        }
+
+        // .border-product {
+        //     border: 1px solid #cecece;
+        // }
+      }
+
+      
+      .btn-primary {
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+      }
+    }
+  }
+}
+
+.noData {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  color: #4a4a4a;
+  margin-top: 15%;
+}

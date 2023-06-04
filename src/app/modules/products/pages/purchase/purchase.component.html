@@ -1,0 +1,46 @@
+<div class="section-products">
+  <div class="container-product">
+    <h3>Cart Pending</h3>
+    <div [ngClass]="cart && (cart.length > 0 || cart.length != productDel) ? 'd-block' : 'd-none'" id="productList">
+      <div class="card-product">
+        <form [formGroup]="formGroup" *ngIf="products">
+          <div [formArrayName]="'products'">
+            <div class="product" *ngFor="let product of products.controls; let i = index" [formGroupName]='i'>
+              <div id="cart-{{cart[i]._id}}">
+                <div class="d-flex justify-content-between mb-2">
+                  <h5>{{cart[i]._id.replace('material_','Material ')}}</h5>
+                  <a type="button" href="javascript:void(0);" (click)="deleteProduct(cart[i]._id)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-trash3 text-danger" viewBox="0 0 16 16">
+                      <path
+                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                    </svg>
+                  </a>
+                </div>
+                <div class="amount">
+                  <span>Amount</span>
+                  <input type="hidden" [formControlName]="'_id'" class="form-control form-input" name="_id" id="_id"
+                    autocomplete="off">
+                  <input type="number" [formControlName]="'amount'" minlength="1" class="form-control form-input" name="amount"
+                    id="amount" autocomplete="off" required>
+                </div>
+                <div class="border-bottom mt-4 mb-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <a class="btn btn-primary w-25" type="button" (click)="submit()">Confirm</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div [ngClass]="!cart ? 'd-block' : 'd-none'"  class="text-center" id="noData">
+      <div class="noData">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-inbox" viewBox="0 0 16 16">
+          <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438L14.933 9zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z"/>
+        </svg>
+        <span class="mt-1 ms-3">No Data</span>
+      </div>
+    </div>
+  </div>
+</div>
